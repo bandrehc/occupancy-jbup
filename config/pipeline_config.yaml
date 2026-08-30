@@ -1,0 +1,23 @@
+sampling:
+  fps: 0.0629372  # 300 frames repartidos en todo el video, tras recortar los extremos
+  frame_width: 1280
+  trim_start_seconds: 10  # se excluye: colocación de la cámara al inicio
+  trim_end_seconds: 5     # se excluye: retiro de la cámara al final
+  target_frames: 300
+
+detection:
+  # 0.5 era el valor por defecto sin calibrar; un barrido de umbral sobre las 1200
+  # etiquetas de ground truth mostró que los falsos positivos se mantienen ~constantes
+  # (17) entre 0.5 y 0.25, mientras el recall de "ocupado" sube de 0.38 a 0.77 — el
+  # video es borroso y muchas detecciones reales de persona nunca llegan a 0.5.
+  confidence_threshold: 0.25
+  object_confidence_threshold: 0.25  # backpack/laptop/etc son más chicos y borrosos: exigirles 0.5 nunca dispara "reservado"
+  weights: models/weights/yolov8n.pt
+
+refinement:
+  confidence_margin: 0.15
+
+matching:
+  min_seat_overlap: 0.25  # fracción del área del polígono del asiento que debe cubrir una detección
+
+seats_config: data/calibration/seats.json
