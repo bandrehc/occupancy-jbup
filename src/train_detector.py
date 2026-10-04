@@ -86,7 +86,7 @@ def build_model():
 
 def train(labels_path="data/ground_truth", frames_dir="data/frames",
           config_path="config/pipeline_config.yaml", epochs=20, batch_size=16, lr=1e-3,
-          split="tail", holdout_video=None,
+          split="tail", holdout_video=None, patience=5,
           model_out="models/weights/person_detector.pt",
           report_out="output/reports/evaluation_detector.md"):
     """Entrena Canal 1: clasificador binario persona/no-persona sobre crops de asiento."""
@@ -156,6 +156,7 @@ def train(labels_path="data/ground_truth", frames_dir="data/frames",
 
     best_val_acc = -1.0
     best_state   = None
+    no_improve   = 0
 
     for epoch in range(1, epochs + 1):
         model.train()
@@ -175,10 +176,18 @@ def train(labels_path="data/ground_truth", frames_dir="data/frames",
                 for images, labels in val_loader:
                     correct += (model(images).argmax(dim=1) == labels).sum().item()
             val_acc = correct / len(val_ds)
-            print(f"epoch {epoch:02d}/{epochs}  train_loss={train_loss:.4f}  val_acc={val_acc:.3f}", flush=True)
             if val_acc > best_val_acc:
                 best_val_acc = val_acc
                 best_state   = {k: v.clone() for k, v in model.state_dict().items()}
+                no_improve   = 0
+                marker = " ✓"
+            else:
+                no_improve += 1
+                marker = f" ({no_improve}/{patience})"
+            print(f"epoch {epoch:02d}/{epochs}  train_loss={train_loss:.4f}  val_acc={val_acc:.3f}{marker}", flush=True)
+            if patience > 0 and no_improve >= patience:
+                print(f"Early stopping en epoch {epoch} — sin mejora en {patience} epochs consecutivos.", flush=True)
+                break
         else:
             print(f"epoch {epoch:02d}/{epochs}  train_loss={train_loss:.4f}", flush=True)
 
@@ -214,6 +223,8 @@ if __name__ == "__main__":
     parser.add_argument("--lr",           type=float, default=1e-3)
     parser.add_argument("--split",        choices=["tail", "interleaved", "full", "camera_holdout"], default="tail")
     parser.add_argument("--holdout-video", default="video9cut2")
+    parser.add_argument("--patience", type=int, default=5,
+                        help="Early stopping: epochs sin mejora (0 = desactivado).")
     parser.add_argument("--labels",       default="data/ground_truth")
     parser.add_argument("--model-out",    default="models/weights/person_detector.pt")
     parser.add_argument("--report-out",   default="output/reports/evaluation_detector.md")
@@ -221,5 +232,5 @@ if __name__ == "__main__":
     train(
         labels_path=args.labels, epochs=args.epochs, batch_size=args.batch_size,
         lr=args.lr, split=args.split, holdout_video=args.holdout_video,
-        model_out=args.model_out, report_out=args.report_out,
+        patience=args.patience, model_out=args.model_out, report_out=args.report_out,
     )

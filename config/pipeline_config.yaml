@@ -53,4 +53,4 @@ videos:
     frames_dir: data/frames/video9cut2
 
 # Cámara reservada para validación cross-cámara (holdout).
-camera_holdout_video: video9cut2
+camera_holdout_video: video4
