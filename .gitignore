@@ -8,9 +8,8 @@ __pycache__/
 # Videos procesados — demasiado grandes para git
 data/processed/
 
-# Frames extraídos — regenerables con preprocessing.py
-data/frames/video*/
-data/frames/manifest.csv
+# Manifests de extracción (regenerables)
+data/frames/**/manifest.csv
 
 # Archivo suelto en raíz
 frame_000042.jpg
