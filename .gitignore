@@ -4,3 +4,13 @@ models/weights/
 __pycache__/
 *.pyc
 .venv/
+
+# Videos procesados — demasiado grandes para git
+data/processed/
+
+# Frames extraídos — regenerables con preprocessing.py
+data/frames/video*/
+data/frames/manifest.csv
+
+# Archivo suelto en raíz
+frame_000042.jpg

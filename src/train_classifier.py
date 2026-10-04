@@ -25,10 +25,16 @@ from torchvision.models import ResNet18_Weights, resnet18
 from config import load_config
 from evaluate import evaluate_pairs
 from seat_dataset import (
-    STATUSES, SeatCropDataset, chronological_split, full_split, interleaved_split, load_entries, seat_bboxes,
+    STATUSES, SeatCropDataset, camera_holdout_split, chronological_split,
+    full_split, interleaved_split, load_entries, seat_bboxes,
 )
 
-SPLITTERS = {"tail": chronological_split, "interleaved": interleaved_split, "full": full_split}
+SPLITTERS = {
+    "tail":           chronological_split,
+    "interleaved":    interleaved_split,
+    "full":           full_split,
+    "camera_holdout": camera_holdout_split,
+}
 
 IMAGENET_MEAN = [0.485, 0.456, 0.406]
 IMAGENET_STD = [0.229, 0.224, 0.225]
@@ -43,26 +49,68 @@ def build_model():
     return model
 
 
+def _load_multi_video_config(cfg, legacy_frames_dir):
+    """Construye seats_map y frames_dirs desde cfg['videos'].
+
+    Si cfg no tiene sección 'videos', usa el valor legado seats_config +
+    legacy_frames_dir mapeado a video_id="video1".
+    """
+    videos_cfg = cfg.get("videos", {})
+    if videos_cfg:
+        seats_map   = {vid: seat_bboxes(info["seats_config"]) for vid, info in videos_cfg.items()}
+        frames_dirs = {vid: info.get("frames_dir", f"data/frames/{vid}") for vid, info in videos_cfg.items()}
+    else:
+        seats_map   = {"video1": seat_bboxes(cfg["seats_config"])}
+        frames_dirs = {"video1": legacy_frames_dir}
+    return seats_map, frames_dirs
+
+
 def train(labels_path="data/ground_truth", frames_dir="data/frames",
           config_path="config/pipeline_config.yaml", epochs=25, batch_size=16, lr=1e-3,
-          split="tail",
+          split="tail", holdout_video=None,
           model_out="models/weights/seat_classifier.pt",
           report_out="output/reports/evaluation_classifier.md"):
-    """labels_path puede ser un .json puntual o (por defecto) el directorio
-    data/ground_truth/, que junta TODOS los .json que haya ahí — así sumar una
-    sesión de grabación nueva es solo agregar un archivo, sin tocar código."""
+    """Canal 2 del serial dual-channel: clasifica asientos sin persona como
+    'reservado' (objetos presentes) o 'libre' (vacío).
+
+    labels_path puede ser un .json puntual o el directorio data/ground_truth/
+    (carga todos los .json del dir, cada uno con su video_id derivado del nombre).
+
+    split='camera_holdout' reserva holdout_video como cámara de validación
+    cross-ángulo (prueba de generalización real).
+    """
     cfg = load_config(config_path)
-    bboxes = seat_bboxes(cfg["seats_config"])
+    seats_map, frames_dirs = _load_multi_video_config(cfg, frames_dir)
+
+    if holdout_video is None:
+        holdout_video = cfg.get("camera_holdout_video", "video9cut2")
 
     entries = load_entries(labels_path)
-    train_entries, val_entries = SPLITTERS[split](entries, val_fraction=0.2)
-    print(f"train={len(train_entries)} val={len(val_entries)} (split='{split}', por frame, no al azar)", flush=True)
+
+    if split == "camera_holdout":
+        train_entries, val_entries = camera_holdout_split(entries, holdout_video_id=holdout_video)
+    else:
+        train_entries, val_entries = SPLITTERS[split](entries, val_fraction=0.2)
+
+    n_videos_train = len(set(e.get("video_id", "video1") for e in train_entries))
+    n_videos_val   = len(set(e.get("video_id", "video1") for e in val_entries))
+    print(
+        f"train={len(train_entries)} ({n_videos_train} videos)  "
+        f"val={len(val_entries)} ({n_videos_val} videos)  "
+        f"split='{split}'",
+        flush=True,
+    )
+
+    # Fallback legacy: si entries solo tienen "video1", frames_dir y primer bboxes
+    legacy_bboxes = next(iter(seats_map.values())) if seats_map else {}
 
     train_tf = transforms.Compose([
         transforms.Resize((224, 224)),
         transforms.RandomHorizontalFlip(),
         transforms.ColorJitter(brightness=0.25, contrast=0.25),
         transforms.RandomRotation(5),
+        transforms.RandomPerspective(distortion_scale=0.2, p=0.3),
+        transforms.RandomAffine(degrees=10, translate=(0.05, 0.05)),
         transforms.ToTensor(),
         transforms.Normalize(IMAGENET_MEAN, IMAGENET_STD),
     ])
@@ -72,10 +120,16 @@ def train(labels_path="data/ground_truth", frames_dir="data/frames",
         transforms.Normalize(IMAGENET_MEAN, IMAGENET_STD),
     ])
 
-    train_ds = SeatCropDataset(train_entries, frames_dir, bboxes, train_tf)
+    train_ds = SeatCropDataset(
+        train_entries, frames_dir, legacy_bboxes, train_tf,
+        frames_dirs=frames_dirs, seats_map=seats_map,
+    )
     train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True)
     has_val = len(val_entries) > 0
-    val_ds = SeatCropDataset(val_entries, frames_dir, bboxes, val_tf) if has_val else None
+    val_ds = SeatCropDataset(
+        val_entries, frames_dir, legacy_bboxes, val_tf,
+        frames_dirs=frames_dirs, seats_map=seats_map,
+    ) if has_val else None
     val_loader = DataLoader(val_ds, batch_size=batch_size, shuffle=False) if has_val else None
 
     counts = [max(1, sum(1 for e in train_entries if e["status"] == s)) for s in STATUSES]
@@ -148,11 +202,14 @@ if __name__ == "__main__":
     parser.add_argument("--epochs", type=int, default=25)
     parser.add_argument("--batch-size", type=int, default=16)
     parser.add_argument("--lr", type=float, default=1e-3)
-    parser.add_argument("--split", choices=["tail", "interleaved", "full"], default="tail")
+    parser.add_argument("--split", choices=["tail", "interleaved", "full", "camera_holdout"], default="tail")
+    parser.add_argument("--holdout-video", default="video9cut2",
+                        help="video_id reservado para validación cross-cámara (solo con --split camera_holdout).")
     parser.add_argument("--labels", default="data/ground_truth",
                          help="Archivo .json puntual o directorio con todas las sesiones (default).")
     parser.add_argument("--model-out", default="models/weights/seat_classifier.pt")
     parser.add_argument("--report-out", default="output/reports/evaluation_classifier.md")
     args = parser.parse_args()
-    train(labels_path=args.labels, epochs=args.epochs, batch_size=args.batch_size, lr=args.lr, split=args.split,
+    train(labels_path=args.labels, epochs=args.epochs, batch_size=args.batch_size, lr=args.lr,
+          split=args.split, holdout_video=args.holdout_video,
           model_out=args.model_out, report_out=args.report_out)

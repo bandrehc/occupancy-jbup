@@ -1,0 +1,1642 @@
+[
+  {
+    "frame_file": "frame_000001.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000001.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000001.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000001.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000002.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000002.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000002.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000002.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000003.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000003.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000003.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000003.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000004.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000004.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000004.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000004.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000005.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000005.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000005.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000005.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000006.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000006.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000006.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000006.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000007.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000007.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000007.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000007.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000008.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000008.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000008.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000008.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000009.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000009.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000009.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000009.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000010.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000010.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000010.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000010.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000011.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000011.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000011.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000011.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000012.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000012.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000012.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000012.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000013.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000013.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000013.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000013.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000014.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000014.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000014.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000014.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000015.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000015.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000015.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000015.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000016.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000016.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000016.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000016.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000017.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000017.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000017.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000017.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000018.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000018.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000018.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000018.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000019.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000019.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000019.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000019.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000020.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000020.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000020.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000020.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000021.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000021.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000021.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000021.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000022.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000022.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000022.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000022.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000023.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000023.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000023.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000023.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000024.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000024.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000024.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000024.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000025.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000025.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000025.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000025.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000026.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000026.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000026.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000026.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000027.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000027.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000027.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000027.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000028.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000028.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000028.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000028.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000029.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000029.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000029.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000029.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000030.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000030.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000030.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000030.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000031.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000031.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000031.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000031.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000032.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000032.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000032.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000032.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000033.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000033.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000033.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000033.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000034.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000034.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000034.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000034.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000035.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000035.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000035.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000035.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000036.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000036.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000036.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000036.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000037.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000037.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000037.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000037.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000038.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000038.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000038.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000038.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000039.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000039.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000039.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000039.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000040.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000040.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000040.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000040.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000041.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000041.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000041.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000041.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000042.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000042.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000042.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000042.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000043.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000043.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000043.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000043.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000044.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000044.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000044.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000044.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000045.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000045.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000045.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000045.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000046.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000046.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000046.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000046.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000047.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000047.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000047.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000047.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000048.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000048.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000048.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000048.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000049.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000049.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000049.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000049.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000050.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000050.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000050.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000050.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000051.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000051.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000051.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000051.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000052.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000052.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000052.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000052.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000053.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000053.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000053.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000053.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000054.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000054.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000054.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000054.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000055.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000055.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000055.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000055.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000056.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000056.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000056.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000056.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000057.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000057.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000057.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000057.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000058.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000058.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000058.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000058.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000059.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000059.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000059.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000059.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000060.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000060.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000060.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000060.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000061.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000061.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000061.jpg",
+    "seat_id": "A3",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000061.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000062.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000062.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000062.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000062.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000063.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000063.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000063.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000063.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000064.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000064.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000064.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000064.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000065.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000065.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000065.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000065.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000066.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000066.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000066.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000066.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000067.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000067.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000067.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000067.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000068.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000068.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000068.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000068.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000069.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000069.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000069.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000069.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000070.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000070.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000070.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000070.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000071.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000071.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000071.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000071.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000072.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000072.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000072.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000072.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000073.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000073.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000073.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000073.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000074.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000074.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000074.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000074.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000075.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000075.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000075.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000075.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000076.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000076.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000076.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000076.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000077.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000077.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000077.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000077.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000078.jpg",
+    "seat_id": "A1",
+    "status": "ocupado"
+  },
+  {
+    "frame_file": "frame_000078.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000078.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000078.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000079.jpg",
+    "seat_id": "A1",
+    "status": "reservado"
+  },
+  {
+    "frame_file": "frame_000079.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000079.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000079.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000080.jpg",
+    "seat_id": "A1",
+    "status": "reservado"
+  },
+  {
+    "frame_file": "frame_000080.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000080.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000080.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000081.jpg",
+    "seat_id": "A1",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000081.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000081.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000081.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000082.jpg",
+    "seat_id": "A1",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000082.jpg",
+    "seat_id": "A2",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000082.jpg",
+    "seat_id": "A3",
+    "status": "libre"
+  },
+  {
+    "frame_file": "frame_000082.jpg",
+    "seat_id": "A4",
+    "status": "libre"
+  }
+]

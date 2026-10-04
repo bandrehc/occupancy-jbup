@@ -1,23 +1,56 @@
 sampling:
-  fps: 0.0629372  # 300 frames repartidos en todo el video, tras recortar los extremos
+  # fps se calcula automáticamente a partir de target_frames cuando se deja en 0.
+  # Para video1 se mantiene el valor original; para videos nuevos usar target_frames.
+  fps: 0.0629372
   frame_width: 1280
   trim_start_seconds: 10  # se excluye: colocación de la cámara al inicio
   trim_end_seconds: 5     # se excluye: retiro de la cámara al final
-  target_frames: 300
+  target_frames: 300      # frames a muestrear por video (usado cuando fps=0)
 
 detection:
-  # 0.5 era el valor por defecto sin calibrar; un barrido de umbral sobre las 1200
-  # etiquetas de ground truth mostró que los falsos positivos se mantienen ~constantes
-  # (17) entre 0.5 y 0.25, mientras el recall de "ocupado" sube de 0.38 a 0.77 — el
-  # video es borroso y muchas detecciones reales de persona nunca llegan a 0.5.
   confidence_threshold: 0.25
-  object_confidence_threshold: 0.25  # backpack/laptop/etc son más chicos y borrosos: exigirles 0.5 nunca dispara "reservado"
+  object_confidence_threshold: 0.25
   weights: models/weights/yolov8n.pt
 
 refinement:
   confidence_margin: 0.15
 
 matching:
-  min_seat_overlap: 0.25  # fracción del área del polígono del asiento que debe cubrir una detección
+  min_seat_overlap: 0.25
 
-seats_config: data/calibration/seats.json
+# Configuración legada (video único) — apunta al mismo archivo que videos.video1
+seats_config: data/calibration/seats_video1.json
+
+# Configuración multi-video: un entry por sesión de grabación.
+# Convención de video_id: coincide con el prefijo de labels_<video_id>.json
+videos:
+  video1:
+    seats_config: data/calibration/seats_video1.json
+    frames_dir: data/frames/video1
+  video2:
+    seats_config: data/calibration/seats_video2.json
+    frames_dir: data/frames/video2
+  video3:
+    seats_config: data/calibration/seats_video3.json
+    frames_dir: data/frames/video3
+  video4:
+    seats_config: data/calibration/seats_video4.json
+    frames_dir: data/frames/video4
+  video5:
+    seats_config: data/calibration/seats_video5.json
+    frames_dir: data/frames/video5
+  video6:
+    seats_config: data/calibration/seats_video6.json
+    frames_dir: data/frames/video6
+  video7:
+    seats_config: data/calibration/seats_video7.json
+    frames_dir: data/frames/video7
+  video9cut1:
+    seats_config: data/calibration/seats_video9cut1.json
+    frames_dir: data/frames/video9cut1
+  video9cut2:
+    seats_config: data/calibration/seats_video9cut2.json
+    frames_dir: data/frames/video9cut2
+
+# Cámara reservada para validación cross-cámara (holdout).
+camera_holdout_video: video9cut2
