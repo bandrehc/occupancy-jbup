@@ -5,6 +5,9 @@ __pycache__/
 *.pyc
 .venv/
 
+# Herramientas de desarrollo
+.claude/
+
 # Videos procesados — demasiado grandes para git
 data/processed/
 

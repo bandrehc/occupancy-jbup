@@ -1,184 +1,146 @@
-# occupancy-jbup
+# Detección de Ocupación de Asientos — Biblioteca JBUP
 
-Detección de ocupación de puestos de estudio en la biblioteca JBUP a partir de
-video de cámara fija: extracción de frames, calibración manual de zonas de
-interés (ROI) por asiento, etiquetado de ground truth, y un clasificador de
-imagen (ResNet18 fine-tuned) que predice el estado de cada asiento —
-`libre` / `ocupado` / `reservado` — directamente sobre el recorte de su ROI.
+Sistema de detección automática del estado de asientos en una biblioteca
+universitaria a partir de video de cámara fija. Clasifica cada asiento como
+**libre**, **ocupado** o **reservado** (objetos presentes sin persona sentada)
+mediante una arquitectura serial de dos canales basada en ResNet18.
 
-## Estado actual
+Adaptado del enfoque propuesto en *A Serial Dual-Channel Library Occupancy
+Detection System Based on Faster RCNN*.
 
-Pipeline funcional de punta a punta. Modelo de producción entrenado sobre las
-1200 etiquetas manuales disponibles (300 frames × 4 asientos); accuracy
-estimado por validación cruzada (dos splits independientes, ver
-"Por qué un clasificador y no YOLO" más abajo):
+## Arquitectura
 
-| clase | precisión | recall | f1 |
-|---|---|---|---|
-| libre | 0.985–0.990 | 1.000 | 0.992–0.995 |
-| ocupado | 1.000 | 0.989–0.990 | 0.995 |
-| reservado | 0.977–0.987 | 0.977–0.987 | 0.977–0.987 |
-
-**Accuracy: 99.2%** en ambas validaciones (`output/reports/evaluation_classifier_tail.md`,
-`output/reports/evaluation_classifier_interleaved.md`). El modelo desplegado
-(`models/weights/seat_classifier.pt`) se reentrenó sobre el 100% de los datos
-una vez validado el enfoque — ver sección de entrenamiento.
-
-### Limitación conocida
-
-El modelo aprende la apariencia específica de **estos 4 asientos desde esta
-cámara**. Si la cámara se mueve o cambia el mobiliario, hay que recalibrar
-(`seats.json`), re-etiquetar esa nueva vista y reentrenar — no generaliza a
-otra escena como sí lo haría un detector de personas genérico. Es un
-trade-off aceptado a propósito (ver comparación), no un descuido.
-
-## Pipeline
+Pipeline serial de dos canales donde el resultado del primero condiciona la
+entrada al segundo:
 
 ```
-1. Extracción de frames       src/preprocessing.py (extract_frames)
-2. Calibración de asientos    data/calibration/seats.json (polígonos ROI por asiento)
-3. Etiquetado ground truth    data/ground_truth/*.json (manual, 3 clases)
-4. Entrenamiento               src/train_classifier.py (ResNet18 sobre los recortes ROI)
-5. Evaluación                  integrada en train_classifier.py (mismo formato que evaluate.py)
+Frame completo
+  └─► recortar ROI de cada asiento (polígonos calibrados por cámara)
+        └─► Canal 1 — ¿hay persona sentada?
+              ├─ SÍ → estado = "ocupado"
+              └─ NO → Canal 2 — ¿hay objetos en el asiento?
+                        ├─ SÍ → estado = "reservado"
+                        └─ NO → estado = "libre"
 ```
 
-### 1. Extracción de frames
+| Canal | Modelo | Salida | Script |
+|-------|--------|--------|--------|
+| Canal 1 | ResNet18 fine-tuned (binario) | persona / sin persona | `src/train_detector.py` |
+| Canal 2 | ResNet18 fine-tuned (3 clases) | libre / ocupado / reservado | `src/train_classifier.py` |
 
-```
-python -c "
-import sys; sys.path.insert(0, 'src')
-from preprocessing import extract_frames
-extract_frames('data/raw/<video>.mp4', 'data/frames')
-"
-```
+Ambos canales comparten backbone (ResNet18 preentrenado en ImageNet) con
+`layer4` + `fc` reentrenables y el resto congelado.
 
-Parámetros en `config/pipeline_config.yaml` → `sampling`: fps, ancho de salida,
-y `trim_start_seconds`/`trim_end_seconds` para excluir los extremos del video
-donde se manipula la cámara (colocación/retiro).
+## Dataset
 
-### 2. Calibración de asientos
+9 videos de cámara fija con diferentes posiciones y ángulos, 300 frames
+extraídos por video, etiquetados manualmente asiento por asiento:
 
-`data/calibration/seats.json` — un polígono por asiento (silla + zona de
-torso). Herramienta interactiva: `python src/calibrate_seats.py` (ventana
-OpenCV). Solo hace falta recalibrar si la cámara se mueve.
+| Video | Entradas | Libre | Reservado | Ocupado |
+|-------|----------|-------|-----------|---------|
+| video1 | 1,196 | 521 | 198 | 477 |
+| video2 | 1,500 | 705 | 19 | 776 |
+| video3 | 1,200 | 0 | 149 | 1,051 |
+| video4 | 1,200 | 459 | 386 | 355 |
+| video5 | 1,200 | 0 | 600 | 600 |
+| video6 | 1,435 | 549 | 74 | 812 |
+| video7 | 328 | 187 | 2 | 139 |
+| video9cut1 | 1,200 | 180 | 124 | 896 |
+| video9cut2 | 1,200 | 0 | 126 | 1,074 |
+| **Total** | **10,459** | **2,601** | **1,678** | **6,180** |
 
-### 3. Ground truth manual
-
-`data/ground_truth/labels.json` — lista de `{frame_file, timestamp_seconds,
-seat_id, status}`, con `status` en `libre` / `ocupado` / `reservado`.
-Etiquetado hecho a mano sobre recortes de cada ROI (no el frame completo), un
-frame a la vez.
-
-Criterio para `reservado`: silla vacía pero con objetos personales visibles
+Criterio para **reservado**: asiento vacío con objetos personales visibles
 (mochila, laptop, etc.) que indican que el puesto está tomado aunque nadie
-esté sentado en ese instante. Una persona cruzando el fondo sin sentarse no
-cambia el estado del asiento afectado.
+esté sentado.
 
-### 4. Entrenamiento
+## Evaluación
 
-```
-python src/train_classifier.py --split full --epochs 15
-```
+Split **leave-one-camera-out**: se entrena con 8 videos y se evalúa sobre
+`video4` (1,200 entradas con distribución balanceada de las 3 clases). Esto
+mide generalización real a cámaras no vistas durante entrenamiento.
 
-ResNet18 preentrenado en ImageNet, con solo `layer4` y `fc` reentrenables (el
-resto congelado — con ~1000 ejemplos, ajustar la red completa arriesga
-sobreajuste). Cabeza reemplazada por una capa de 3 clases. `CrossEntropyLoss`
-con pesos inversos a la frecuencia de cada clase (hay más `libre` que
-`reservado`). Aumento de datos: flip horizontal, jitter de brillo/contraste,
-rotación ±5°.
+**Accuracy del clasificador (Canal 2): 99.9%** sobre el video holdout.
 
-`--split full` entrena con el 100% de los datos (modelo de producción, sin
-held-out — usar solo después de haber validado el enfoque). Para validar antes
-de confiar en un cambio (más datos, otra arquitectura, etc.), usar:
+| Clase | Precisión | Recall | F1 | Support |
+|-------|-----------|--------|-----|---------|
+| ocupado | 1.000 | 0.999 | 1.000 | 1,074 |
+| reservado | 0.992 | 1.000 | 0.996 | 126 |
+
+## Pipeline completo
 
 ```
-python src/train_classifier.py --split tail          # último 20% del video como validación
-python src/train_classifier.py --split interleaved   # 1 de cada 5 frames, repartido en todo el video
+1. Preprocesamiento      ffmpeg (recorte temporal, sin audio)
+2. Extracción de frames  src/preprocessing.py (300 frames/video, auto-FPS)
+3. Calibración ROI       data/calibration/seats_videoN.json (polígonos por asiento)
+4. Anotación manual      data/ground_truth/labels_videoN.json (3 clases)
+5. Entrenamiento          src/train_classifier.py + src/train_detector.py
+6. Evaluación             métricas integradas con split camera_holdout
 ```
 
-Ambos splits separan por `frame_file` completo (nunca al azar por ejemplo
-individual): los 4 recortes de un mismo frame están altamente correlacionados,
-así que mezclarlos entre train/val infla la métrica artificialmente.
+### Entrenamiento
 
-### 5. Evaluación
+```bash
+# Canal 2 — clasificador triclase
+python src/train_classifier.py --split camera_holdout --epochs 30 --lr 5e-4 --patience 5
 
-Integrada al final de `train_classifier.py` cuando hay held-out (`--split
-tail`/`interleaved`): genera un reporte con el mismo formato que
-`src/evaluate.py` (accuracy, precisión/recall/f1 por clase, matriz de
-confusión), para que sea comparable 1:1 contra el pipeline de YOLO.
+# Canal 1 — detector binario de persona
+python src/train_detector.py --split camera_holdout --epochs 20 --lr 1e-3 --patience 5
+```
 
-## Cómo agregar más sesiones de grabación
+Hiperparámetros: batch size 16, CrossEntropyLoss con pesos inversos a la
+frecuencia de clase, early stopping con patience=5. Augmentación:
+`RandomHorizontalFlip`, `ColorJitter`, `RandomRotation(5)`,
+`RandomPerspective`, `RandomAffine`.
 
-El pipeline está pensado para crecer con más capturas sin tocar código:
+### Agregar un video nuevo
 
-1. Extrae los frames de la sesión nueva en su **propia subcarpeta**:
-   `data/frames/<nombre_sesion>/` (por ejemplo `data/frames/2026-09-15/`).
-2. Si la cámara sigue en la misma posición, reusa `seats.json` tal cual. Si se
-   movió, recalibra (`calibrate_seats.py`) y reemplázalo.
-3. Etiqueta esos frames nuevos (misma mecánica manual) y guarda el resultado
-   como **un archivo `.json` nuevo** dentro de `data/ground_truth/` — por
-   ejemplo `data/ground_truth/labels_2026-09-15.json`. Los `frame_file` deben
-   quedar con el prefijo de su subcarpeta, ej. `"2026-09-15/frame_000001.jpg"`.
-4. Reentrena: `python src/train_classifier.py --split full --epochs 15`.
-   Por defecto, `--labels data/ground_truth` (el directorio) junta **todos**
-   los `.json` que encuentre ahí — no hace falta fusionar archivos a mano.
+1. Convertir: `ffmpeg -i video.mp4 -an -c:v copy data/processed/video_nuevo.mp4`
+2. Calibrar polígonos de asientos → `data/calibration/seats_video_nuevo.json`
+3. Agregar entrada en `config/pipeline_config.yaml`
+4. Extraer frames: `python src/preprocessing.py --video data/processed/video_nuevo.mp4 --output data/frames/video_nuevo --target-frames 300`
+5. (Opcional) Etiquetar y reentrenar para incorporar la nueva perspectiva
 
-Antes de confiar en el modelo resultante, vale la pena correr `--split tail`
-(deja la sesión más nueva fuera del entrenamiento) para confirmar que lo
-aprendido en la sesión anterior generaliza a la nueva, y no solo memorizó la
-primera.
+## Estructura del repositorio
+
+```
+config/pipeline_config.yaml       configuración central del pipeline
+data/calibration/                  polígonos ROI por cámara (seats_videoN.json)
+data/frames/                       frames extraídos por video
+data/frames/first_frames/          primer frame de cada cámara (referencia visual)
+data/ground_truth/                 anotaciones manuales (labels_videoN.json)
+models/weights/                    pesos entrenados (.pt) — no versionados
+output/reports/                    reportes de evaluación
+src/config.py                      carga de pipeline_config.yaml
+src/preprocessing.py               extracción de frames con auto-FPS
+src/calibrate_seats.py             calibración interactiva de polígonos (OpenCV)
+src/seat_dataset.py                dataset multi-video con splits de validación
+src/train_classifier.py            Canal 2: clasificador triclase
+src/train_detector.py              Canal 1: detector binario persona/sin-persona
+src/evaluate.py                    métricas y reporte markdown
+src/render_demo.py                 renderiza video con cajas + estado superpuestos
+src/occupancy_detect.py            enfoque YOLO previo (referencia histórica)
+docs/metodologia.md                documento de metodología completo
+Antecedentes/                      paper de referencia
+```
 
 ## Por qué un clasificador y no YOLO
 
-El enfoque original (todavía en el repo, `src/occupancy_detect.py`) corría
-YOLO (detección de personas + objetos COCO) y cruzaba cada detección contra
-los polígonos de asiento con una heurística de solape + banda de confianza
-dudosa + recorte de refinamiento. Funcionaba (86.9% accuracy tras varias
-rondas de calibración — ver `output/reports/evaluation.md`), pero:
+El enfoque original usaba YOLOv8n para detectar personas y objetos, cruzando
+detecciones contra los polígonos de asiento. Alcanzó 86.9% accuracy pero
+**reservado** tenía un techo duro: YOLO detecta mochilas/laptops con confianza
+muy baja (~0.25–0.35) en video de baja resolución, limitando el recall de esa
+clase a 45.5%.
 
-- **`reservado` tenía un techo duro**: YOLOv8n detecta mochilas/laptops con
-  confianza muy baja (~0.25–0.35 máx.) en este video borroso → 45.5% recall,
-  sin importar cuánto se ajustara el umbral.
-- El clasificador no tiene ese techo: aprende directamente de las 1200
-  etiquetas cualquier señal visual usada al etiquetar (no solo "hay una
-  mochila/laptop/cartera/maleta de COCO"), y sube `reservado` a 97.7-98.7%
-  recall.
-- Es la herramienta correcta para el objetivo real: **no** hacía falta
-  detectar objetos ni generalizar a otra escena — solo clasificar el estado
-  de 4 asientos fijos, y eso es exactamente lo que optimiza un clasificador
-  entrenado en la tarea, en vez de derivarlo de un detector genérico.
+El clasificador aprende directamente de las etiquetas cualquier señal visual
+relevante (no solo categorías COCO) y sube **reservado** a >99% recall. El
+trade-off es que no generaliza a escenas completamente distintas sin
+recalibración — aceptable para cámaras fijas de una biblioteca específica.
 
-El trade-off (documentado arriba en "Limitación conocida") es que YOLO
-generaliza a cámaras/salas nuevas sin reentrenar y el clasificador no. Para
-este proyecto (cámara fija de esta biblioteca) esa generalización no se
-necesita, así que no vale el costo en precisión.
-
-`occupancy_detect.py` y `evaluate.py` se mantienen en el repo como referencia
-y punto de comparación, no como pipeline activo.
-
-## Estructura
-
-```
-config/pipeline_config.yaml    parámetros del pipeline (sampling, detección YOLO, matching)
-data/raw/                      video(s) fuente (no versionado)
-data/frames/                   frames extraídos por sesión + manifest.csv
-data/calibration/seats.json    polígonos ROI por asiento
-data/ground_truth/*.json       etiquetado manual, un archivo por sesión
-data/processed/                videos/artefactos de demo renderizados
-models/weights/                 pesos de YOLO y del clasificador (no versionado)
-output/reports/                 predicciones + reportes de evaluación
-src/preprocessing.py            extracción de frames, normalización de iluminación
-src/calibrate_seats.py          calibración interactiva de polígonos (OpenCV)
-src/seat_dataset.py             dataset de recortes ROI + splits de validación
-src/train_classifier.py         entrenamiento del clasificador (pipeline activo)
-src/render_demo.py              renderiza un tramo de video con cajas + estado superpuestos
-src/occupancy_detect.py         detección YOLO + heurística de solape (referencia histórica)
-src/evaluate.py                 evaluación contra ground truth (usado por ambos enfoques)
-```
+`src/occupancy_detect.py` y `src/evaluate.py` se mantienen como referencia.
 
 ## Setup
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
